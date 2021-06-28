@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -12,15 +12,13 @@ function TodoForm(props){
         console.log('7 items', item);
       };
 
-      useEffect(() => {
-        console.log('I RUN ON EVERY RE-RENDER');
-    });
+ 
      const handleSubmit = (e) => {
         e.preventDefault();
         e.target.reset();
         props.handleSubmit(item);
         const itemObj= {};
-        console.log('15 items', itemObj);
+        // console.log('15 items', itemObj);
         setItem(itemObj);
       };
       

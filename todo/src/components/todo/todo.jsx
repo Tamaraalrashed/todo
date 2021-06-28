@@ -45,9 +45,9 @@ const ToDo= (props)=>{
       useEffect(() => {
 
         if (list.length >0) { 
-          let complete = list.filter(item => !item.complete).length
-          let incomplete = list.length - list.filter(item => !item.complete).length
-          document.title = `complete/incomplete : ${complete} : ${incomplete}` 
+          // let complete = list.filter(item => item.complete).length;
+          let incomplete = list.filter(item => !item.complete).length;
+          document.title = `To Do List : ${incomplete}`; 
         }
       }, [list]);
 

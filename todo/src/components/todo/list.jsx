@@ -12,6 +12,8 @@ function  TodoList(props){
           <span onClick={() => props.handleComplete(item._id)}>
             {item.text}
           </span>
+          <button onClick={() => props.handleDelete(item._id)}>Delete</button>
+          <button onClick={() => props.handleUpdate(item._id)}>Update</button>
         </ListGroup.Item> 
       ))}
     </ul>
