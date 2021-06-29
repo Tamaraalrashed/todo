@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import TodoForm from './form';
 import TodoList from './list';
 
+import {Badge} from 'react-bootstrap';
+
   import './todo.scss';
 
 const todoAPI = 'https://api-js401.herokuapp.com/api/v1/todo';
@@ -67,8 +69,11 @@ const ToDo = () => {
     return (
       <>
         <header>
+       
           <h2>
-            There are {list.filter(item => !item.complete).length} Items To Complete
+          <Badge variant="dark"  style={{'width': '96%' ,'margin' : '2%' , 'boarder-radios' : 'none' , 'padding' : '20px 30px' , 'text-align' : 'left', 'background':'black'}}>
+          To Do List Manager ({list.filter(item => !item.complete).length})  
+        </Badge>
           </h2>
         </header>
   
@@ -82,6 +87,7 @@ const ToDo = () => {
             <TodoList
               list={list}
               handleComplete={_toggleComplete}
+              // deleteTask={_deleteTask}
             />
           </div>
         </section>

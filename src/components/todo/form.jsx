@@ -2,25 +2,15 @@ import React, { useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import useForm from "../../components/hooks/useform.jsx";
 
 function TodoForm(props){
-    const [item,setItem]=useState({});
 
+  const [handleInputChange, handleSubmit] = useForm(cb);
 
-    const handleInputChange = e => {
-        setItem({ ...item, [e.target.name]: e.target.value  });
-        console.log('7 items', item);
-      };
-
- 
-     const handleSubmit = (e) => {
-        e.preventDefault();
-        e.target.reset();
-        props.handleSubmit(item);
-        const itemObj= {};
-        // console.log('15 items', itemObj);
-        setItem(itemObj);
-      };
+  function cb(item){
+    props.handleSubmit(item);
+  }
       
       return (
         <>
@@ -44,6 +34,12 @@ function TodoForm(props){
                 <Form.Control defaultValue="1" type="range" min="1" max="5" name="difficulty" onChange={handleInputChange} />
             </Form.Label>
           </Form.Group>
+          <Form.Group controlId="formBasicEmail">
+        <Form.Label>
+        <span>Due Date</span>
+        <Form.Control type="date" name="due"  onChange={handleInputChange} />
+        </Form.Label>
+        </Form.Group>
             <Button variant="primary" type="submit">Add Item</Button>
           </form>
         </Container>  
