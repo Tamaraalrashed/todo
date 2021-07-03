@@ -7,7 +7,7 @@ const useForm= (cb)=>{
 
     const handleInputChange = e => {
         setItem({ ...item, [e.target.name]: e.target.value  });
-        console.log('7 items', item);
+        // console.log('7 items', item);
       };
 
  

@@ -13,7 +13,7 @@ import {Badge} from 'react-bootstrap';
 const ToDo = () => {
 
   
-  const [list,getHandler,postHandler,putHandler, deleteHandler] = useAjax();
+  const [list,getHandler,postHandler,toggleComplete, deleteHandler,putHandler] = useAjax();
     // const _addItem = (item) => {
     //   item.due = new Date();
     //   fetch(todoAPI, {
@@ -66,7 +66,7 @@ const ToDo = () => {
     //     .catch(console.error);
     // };
   
-    useEffect(_getTodoItems, []);
+    useEffect(getHandler, []);
   
     return (
       <>
@@ -82,14 +82,15 @@ const ToDo = () => {
         <section className="todo">
   
           <div>
-            <TodoForm handleSubmit={_addItem} />
+            <TodoForm handleSubmit={postHandler} />
           </div>
   
           <div>
             <TodoList
               list={list}
-              handleComplete={_toggleComplete}
-            handleDelete={_deleteItem}
+              handleComplete={toggleComplete}
+              deleteHandler={deleteHandler}
+              putHandler={putHandler}
             />
           </div>
         </section>
